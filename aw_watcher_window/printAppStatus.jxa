@@ -12,6 +12,30 @@ var seApp         = Application("System Events");
 var oProcess      = seApp.processes.whose({frontmost: true})[0];
 var appName       = oProcess.displayedName();
 
+var oProcessProperties = oProcess.properties()
+var oProcessId = oProcessProperties.id
+var oProcessPid = oProcessProperties.unixId
+var oProcessDescription = oProcessProperties.description
+var oProcessFile = oProcessProperties.applicationFile().posixPath()
+
+var commandLine = Application.currentApplication();
+commandLine.includeStandardAdditions = true;
+
+var getUser = (() => {
+    var command = `ps aux | awk -v PID=${oProcessPid} '$2 == PID { print $1 }'`
+    return commandLine.doShellScript(command);
+})();
+
+var getCommand = (() => {
+    var command = `ps -p ${oProcessPid} -o comm=`
+    return commandLine.doShellScript(command);
+})();
+
+// var getEnvironmentVariables = (() => {
+//     var command = `os.environ`
+//     return commandLine.doShellScript(command);
+// })();
+
 // as of 05/01/21 incognio & url are not actively used in AW
 // variables must be set to `undefined` since this script is re-run via osascript
 // and the previously set values will be cached otherwise
@@ -57,5 +81,11 @@ JSON.stringify({
   app: appName,
   url,
   title,
-  incognito
+  incognito,
+  id: oProcessId,
+  pid: oProcessPid,
+  user: getUser,
+  description: oProcessDescription,
+  executable: oProcessFile,
+  commandLine: getCommand
 });
