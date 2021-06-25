@@ -14,7 +14,16 @@ def get_current_window_linux() -> Optional[dict]:
         cls = xlib.get_window_class(window)
         name = xlib.get_window_name(window)
 
-    return {"app": cls, "title": name}
+    return {
+        "app": cls,
+        "title": name,
+        "id": "#TODO",
+        "pid": "#TODO",
+        "user": "#TODO",
+        "description": "#TODO",
+        "executable": "#TODO",
+        "commandLine": "#TODO"
+    }
 
 
 def get_current_window_macos(strategy: str) -> Optional[dict]:
@@ -25,6 +34,7 @@ def get_current_window_macos(strategy: str) -> Optional[dict]:
         from . import macos_jxa
 
         return macos_jxa.getInfo()
+
     elif strategy == "applescript":
         from . import macos_applescript
 
@@ -45,7 +55,16 @@ def get_current_window_windows() -> Optional[dict]:
     if title is None:
         title = "unknown"
 
-    return {"app": app, "title": title}
+    return {
+        "app": app,
+        "title": title,
+        "id": "#TODO",
+        "pid": "#TODO",
+        "user": "#TODO",
+        "description": "#TODO",
+        "executable": "#TODO",
+        "commandLine": "#TODO"
+    }
 
 
 def get_current_window(strategy: str = None) -> Optional[dict]:
