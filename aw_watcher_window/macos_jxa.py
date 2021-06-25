@@ -56,8 +56,3 @@ def getInfo() -> Dict[str, str]:
 
 if __name__ == "__main__":
     print(getInfo())
-    print("Waiting 5 seconds...")
-    import time
-
-    time.sleep(5)
-    print(getInfo())
