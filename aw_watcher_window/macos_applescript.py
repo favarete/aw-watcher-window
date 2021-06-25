@@ -49,7 +49,16 @@ def getInfo() -> Dict[str, str]:
     app = getApp(output)
     title = getTitle(output)
 
-    return {"app": app, "title": title}
+    return {
+        "app": app,
+        "title": title,
+        "id": "#TODO",
+        "pid": "#TODO",
+        "user": "#TODO",
+        "description": "#TODO",
+        "executable": "#TODO",
+        "commandLine": "#TODO"
+    }
 
 
 def getApp(info: str) -> str:
