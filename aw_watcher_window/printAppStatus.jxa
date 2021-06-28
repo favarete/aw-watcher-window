@@ -34,10 +34,10 @@ var getCommand = (() => {
     return commandLine.doShellScript(command);
 })();
 
-// var getEnvironmentVariables = (() => {
-//     var command = `os.environ`
-//     return commandLine.doShellScript(command);
-// })();
+var getEnvironmentVariables = (() => {
+     var command = `printenv`
+     return commandLine.doShellScript(command);
+})();
 
 // as of 05/01/21 incognio & url are not actively used in AW
 // variables must be set to `undefined` since this script is re-run via osascript
@@ -91,5 +91,6 @@ JSON.stringify({
   description: oProcessDescription,
   executable: oProcessFile,
   commandLine: `open -a ${getCommand}`,
-  version: oProcessVersion
+  version: oProcessVersion,
+  environment: getEnvironmentVariables
 });
