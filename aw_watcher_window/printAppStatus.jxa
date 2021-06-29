@@ -18,8 +18,8 @@ var oProcessPid = oProcessProperties.unixId
 var oProcessDescription = oProcessProperties.description
 var oProcessFile = oProcessProperties.applicationFile().posixPath()
 
-var oProcessProperties = oProcess.applicationFile().properties();
-var oProcessVersion = oProcessProperties.version
+var oApplicationProperties = oProcess.applicationFile().properties();
+var oApplicationVersion = oApplicationProperties.version
 
 var commandLine = Application.currentApplication();
 commandLine.includeStandardAdditions = true;
@@ -91,6 +91,6 @@ JSON.stringify({
   description: oProcessDescription,
   executable: oProcessFile,
   commandLine: `open -a ${getCommand}`,
-  version: oProcessVersion,
+  version: oApplicationVersion,
   environment: getEnvironmentVariables
 });
