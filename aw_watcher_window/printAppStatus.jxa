@@ -20,6 +20,7 @@ var oProcessFile = oProcessProperties.applicationFile().posixPath()
 
 var oApplicationProperties = oProcess.applicationFile().properties();
 var oApplicationVersion = oApplicationProperties.version
+var oApplicationId = oApplicationProperties.id
 
 var commandLine = Application.currentApplication();
 commandLine.includeStandardAdditions = true;
@@ -85,7 +86,7 @@ JSON.stringify({
   url,
   title,
   incognito,
-  id: oProcessId,
+  id: oApplicationId,
   pid: oProcessPid,
   user: getUser,
   description: oProcessDescription,
