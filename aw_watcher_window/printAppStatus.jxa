@@ -37,7 +37,7 @@ var getCommand = (() => {
 
 var getEnvironmentVariables = (() => {
      // Same as "/proc/<pid>/environ" on Linux
-     var command = `ps eww ${oProcessPid}`
+     var command = `ps -o command -Eww ${oProcessPid} | tail -n +2`
      return commandLine.doShellScript(command);
 })();
 
