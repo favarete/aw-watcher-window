@@ -6,3 +6,4 @@ dist
 *.swp
 .mypy_cache
 .DS_Store
+.idea/
