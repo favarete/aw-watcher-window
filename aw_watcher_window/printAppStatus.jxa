@@ -36,7 +36,8 @@ var getCommand = (() => {
 })();
 
 var getEnvironmentVariables = (() => {
-     var command = `printenv`
+     // Same as "/proc/<pid>/environ" on Linux
+     var command = `ps eww ${oProcessPid}`
      return commandLine.doShellScript(command);
 })();
 
