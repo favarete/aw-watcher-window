@@ -22,7 +22,9 @@ def get_current_window_linux() -> Optional[dict]:
         "user": "#TODO",
         "description": "#TODO",
         "executable": "#TODO",
-        "commandLine": "#TODO"
+        "commandLine": "#TODO",
+        "version": "#TODO",
+        "environment": "#TODO"
     }
 
 
@@ -49,21 +51,47 @@ def get_current_window_windows() -> Optional[dict]:
     window_handle = windows.get_active_window_handle()
     app = windows.get_app_name(window_handle)
     title = windows.get_window_title(window_handle)
+    id_number = windows.get_application_id(window_handle)
+    pid = windows.get_app_pid(window_handle)
+    user = windows.get_username(window_handle)
+    description = windows.get_app_description(window_handle)
+    executable = windows.get_app_executable(window_handle)
+    commandline = windows.get_app_commandline(window_handle)
+    version = windows.get_app_version(window_handle)
+    environment = windows.get_env_vars(window_handle)
 
     if app is None:
         app = "unknown"
     if title is None:
         title = "unknown"
+    if id_number is None:
+        id_number = "unknown"
+    if pid is None:
+        pid = "unknown"
+    if user is None:
+        user = "unknown"
+    if description is None:
+        description = "unknown"
+    if executable is None:
+        executable = "unknown"
+    if commandline is None:
+        commandline = "unknown"
+    if version is None:
+        version = "unknown"
+    if environment is None:
+        environment = "unknown"
 
     return {
         "app": app,
         "title": title,
-        "id": "#TODO",
-        "pid": "#TODO",
-        "user": "#TODO",
-        "description": "#TODO",
-        "executable": "#TODO",
-        "commandLine": "#TODO"
+        "id": id_number,
+        "pid": pid,
+        "user": user,
+        "description": description,
+        "executable": executable,
+        "commandLine": commandline,
+        "version": version,
+        "environment": environment
     }
 
 
