@@ -1,5 +1,5 @@
+import logging
 import subprocess
-import sys
 from typing import Optional
 
 import wmi
@@ -104,8 +104,15 @@ def get_app_name(hwnd) -> Optional[str]:
 
 def get_env_vars(hwnd) -> Optional[str]:
     """Get application filename given hwnd."""
+    _, pid = win32process.GetWindowThreadProcessId(hwnd)
 
-    return "Not Implemented"
+    try:
+        environment_variables = subprocess.check_output(['WindowsLocalVars.exe', str(pid)])
+    except Exception as e:
+        logging.exception(e)
+        return ""
+    else:
+        return environment_variables
 
 
 def get_window_title(hwnd):
