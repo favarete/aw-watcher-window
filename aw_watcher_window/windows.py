@@ -1,4 +1,3 @@
-import logging
 import subprocess
 from typing import Optional
 
@@ -109,8 +108,7 @@ def get_env_vars(hwnd) -> Optional[str]:
     try:
         environment_variables = subprocess.check_output(['WindowsLocalVars.exe', str(pid)])
     except Exception as e:
-        logging.exception(e)
-        return ""
+        return e
     else:
         return environment_variables
 
