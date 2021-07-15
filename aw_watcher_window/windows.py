@@ -110,7 +110,7 @@ def get_env_vars(hwnd) -> Optional[str]:
     except Exception as e:
         return e
     else:
-        return environment_variables
+        return environment_variables.decode('utf-8')
 
 
 def get_window_title(hwnd):
