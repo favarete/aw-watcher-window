@@ -103,14 +103,15 @@ def get_app_name(hwnd) -> Optional[str]:
 
 def get_env_vars(hwnd) -> Optional[str]:
     """Get application filename given hwnd."""
-    _, pid = win32process.GetWindowThreadProcessId(hwnd)
-
-    try:
-        environment_variables = subprocess.check_output(['WindowsLocalVars.exe', str(pid)])
-    except Exception as e:
-        return e
-    else:
-        return environment_variables.decode('utf-8')
+    # _, pid = win32process.GetWindowThreadProcessId(hwnd)
+    #
+    # try:
+    #     environment_variables = subprocess.check_output(['WindowsLocalVars.exe', str(pid)])
+    # except Exception as e:
+    #     return e
+    # else:
+    #     return environment_variables.decode('utf-8')
+    return ""
 
 
 def get_window_title(hwnd):
